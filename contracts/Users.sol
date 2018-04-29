@@ -2,9 +2,11 @@ pragma solidity ^0.4.21;
 
 import "./Ownable.sol";
 import "./Roles.sol";
+import "./ManagerWhitelist.sol";
+import "./Fees.sol";
 
 
-contract Users is Ownable, Roles {
+contract Users is Ownable, Roles, ManagerWhitelist, Fees {
 
     enum State {
         Waiting,
@@ -19,6 +21,7 @@ contract Users is Ownable, Roles {
         uint state;
     }
 
+    bool private reentrancyLock = false;
     mapping(address => UserStruct) public users;
     address[] public userIndex;
 
@@ -109,9 +112,28 @@ contract Users is Ownable, Roles {
         return userIndex[_index];
     }
 
-    function setUserStatus(address _user, Role _role) public onlyAsOrOwner(Role.Admin) returns (bool) {
+    function setUserStatus(address _user, Role _role)
+    public
+    onlyAsOrOwner(Role.Admin)
+    returns (bool) {
         roles[_user] = _role;
         return true;
+    }
+
+    function getUserStatus(address _user)
+    public payable
+    onlyAs(Role.Manager)
+    isWhitelisted(msg.sender)
+    returns (uint) {
+        uint256 _weiAmount = msg.value;
+        address _manager = msg.sender;
+        require(_manager != address(0));
+        require(_weiAmount >= fee);
+        require(!reentrancyLock);
+        reentrancyLock = true;
+        owner.transfer(_weiAmount);
+        reentrancyLock = false;
+        return users[_user].state;
     }
 
 }
