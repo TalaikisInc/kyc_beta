@@ -1,4 +1,4 @@
-# KYC Service [beta]
+# identiForm [beta]
 
 ## Status
 

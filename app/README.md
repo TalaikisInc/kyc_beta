@@ -1,1 +1,1 @@
-# KYC dApp Frontend
+# identiForm KYC dApp Frontend
