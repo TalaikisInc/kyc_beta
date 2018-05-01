@@ -2,8 +2,6 @@
   "name": "kyc-contracts",
   "version": "1.0.0",
   "scripts": {
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
     "lint:contract": "solium -d contracts/",
     "lint:contract:fix": "solium -d contracts/ --fix",
     "compile:local": "rm -rf build/ && truffle compile --network development",
@@ -31,6 +29,7 @@
   "license": "GPLv3",
   "dependencies": {
     "chalk": "^2.3.2",
+    "cross-env": "^5.1.4",
     "truffle": "^4.1.5",
     "truffle-contract": "^3.0.4",
     "truffle-hdwallet-provider": "0.0.3"

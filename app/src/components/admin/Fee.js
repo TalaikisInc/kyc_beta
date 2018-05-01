@@ -9,8 +9,6 @@ import Button from 'grommet/components/Button'
 import Label  from 'grommet/components/Label'
 import Form  from 'grommet/components/Form'
 
-import env from '../../env'
-
 class SetFee extends Component {
   constructor() {
     super()
@@ -18,7 +16,7 @@ class SetFee extends Component {
       modalOpen: null,
       success: '',
       failure: '',
-      percentage: '',
+      ether: '',
       fee: ''
     }
 
@@ -45,7 +43,7 @@ class SetFee extends Component {
     this.props.Token.deployed().then(async (token) => {
       token.fee().then((res) => {
         this.setState({
-          fee: res ? res.toNumber() : 'N/A'
+          fee: res ? res.toNumber() / (10 ** 18) : 'N/A'
         })
       })
     })
@@ -59,9 +57,9 @@ class SetFee extends Component {
     event.preventDefault()
 
     this.props.Token.deployed().then(async (token) => {
-      if (this.state.percentage > 0) {
-        const _gas = await token.setNewFee.estimateGas(this.state.percentage * 10 ** env.DECIMALS)
-        token.setNewFee(this.state.percentage * 10 ** env.DECIMALS, {
+      if (this.state.ether > 0) {
+        const _gas = await token.setFee.estimateGas(this.state.ether * 10 ** 18)
+        token.setFee(this.state.ether * 10 ** 18, {
           from: this.props.account,
           gas: _gas,
           gasPrice: this.props.gasPrice
@@ -93,7 +91,7 @@ class SetFee extends Component {
     return (
       <Box align='center'>
         <Heading>Set new fee</Heading>
-        <Label>Current fee is { this.state.fee / 10 ** env.DECIMALS }</Label>
+        <Label>Current fee is { this.state.fee } ether.</Label>
         <Form onSubmit={this.handleSubmit}>
           <Box pad='small' align='center'>
             <Label labelFor="fee">New fee:</Label>
@@ -104,9 +102,9 @@ class SetFee extends Component {
               step='1'
               type='number'
               onDOMChange={this.handleChange}
-              value={this.state.percentage}
-              name='percentage'
-              placeHolder='Percentage, e.g. 1'/>
+              value={this.state.ether}
+              name='ether'
+              placeHolder='Ether, e.g. 0.01'/>
           </Box>
           <Box pad='small' align='center'>
               <Button primary={true} type='submit' label='Set' />

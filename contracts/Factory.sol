@@ -1,9 +1,11 @@
 pragma solidity ^0.4.21;
 
 import "./Users.sol";
+import "./Basic.sol";
+import "./Relay.sol";
 
 
-contract Factory is Users {
+contract Factory is Basic, Relay, Users {
 
     bytes32 public symbol;
     bytes32 public  tokenName;
@@ -12,7 +14,7 @@ contract Factory is Users {
 
     function Factory() public {
         symbol = "KYC";
-        tokenName = "KYC";
+        tokenName = "identiFormKYC";
         decimals = 18;
     }
 

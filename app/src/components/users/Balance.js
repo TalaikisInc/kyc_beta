@@ -43,15 +43,15 @@ class Balance extends PureComponent {
   }
 
   getBalance() {
-    this.props.Crowdsale.deployed().then((crowdsale) => {
-      if(this.props.account != null) {
-        crowdsale.balanceOf(this.props.account).then((tokenBalance) => {
+    if(this.props.account != null) {
+      this.props.Token.deployed().then((token) => {
+        token.balanceOf(this.props.account).then((tokenBalance) => {
           this.setState({
             tokenBalance: tokenBalance ? tokenBalance.toNumber() : 'loading'
           })
         })
-      }
-    })
+      })
+    }
 
     setTimeout(() => {
       this.getBalance()
@@ -90,7 +90,7 @@ class Balance extends PureComponent {
 function mapStateToProps(state) {
   return {
     web3: state.web3,
-    Crowdsale: state.Crowdsale,
+    Token: state.Token,
     account: state.account
   }
 }

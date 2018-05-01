@@ -2,7 +2,7 @@ require('babel-register')
 require('babel-polyfill')
 const assert = require('assert')
 const chalk = require('chalk')
-const prod = false
+const prod = process.envENV === "production"
 const Web3 = require('web3')
 const web3 = new Web3()
 const Factory = artifacts.require('./Factory.sol')

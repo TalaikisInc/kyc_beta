@@ -12,32 +12,22 @@ import Async from './Async'
 import env from '../env'
 ReactGA.initialize(env.GA)
 const supportsHistory = 'pushState' in window.history
-const Help = Async(() => import('./Help'))
-const Exchange = Async(() => import('./Exchange'))
 const Home = Async(() => import('./Home'))
 const Header = Async(() => import('./Header'))
 const Footer = Async(() => import('./Footer'))
-const CoinStats = Async(() => import('./CoinStats'))
-const TransferTokens = Async(() => import('./TransferTokens'))
-const BuyIcoTokens = Async(() => import('./BuyIcoTokens'))
 const Status = Async(() => import('./Status'))
-const PriceMarkup = Async(() => import('./admin/PriceMarkup'))
-const TransferOwnership = Async(() => import('./admin/TransferOwnership'))
-const FinishMinting = Async(() => import('./admin/FinishMinting'))
-const Mint = Async(() => import('./admin/Mint'))
 const RemoveFromWhitelist = Async(() => import('./admin/RemoveFromWhitelist'))
-const ReclaimTokens = Async(() => import('./admin/ReclaimTokens'))
+const Withdraw = Async(() => import('./admin/Withdraw'))
 const AddToWhitelist = Async(() => import('./admin/AddToWhitelist'))
 const Admin = Async(() => import('./admin/Admin'))
-const Approve = Async(() => import('./admin/Approve'))
 const GetUser = Async(() => import('./admin/GetUser'))
 const Fee = Async(() => import('./admin/Fee'))
 const UserList = Async(() => import('./admin/UserList'))
 const DeleteUser = Async(() => import('./users/DeleteUser'))
-const PublicUserList = Async(() => import('./users/PublicUserList'))
 const UpdateUser = Async(() => import('./users/UpdateUser'))
 const AddUser = Async(() => import('./users/AddUser'))
 const NoMatch = Async(() => import('./NoMatch'))
+const MyAccount = Async(() => import('./MyAccount'))
 
 class _App extends PureComponent {
   constructor(props) {
@@ -70,7 +60,6 @@ class _App extends PureComponent {
 
       if (nextProps.web3.web3Initiated) {
         this.props.initToken(nextProps.web3)
-        this.props.initCrowdsale(nextProps.web3)
       }
     }
 
@@ -102,25 +91,15 @@ class _App extends PureComponent {
                   ? <div>
                       <Header />
                       <Switch>
-                      <Route exact strict sensitive path='/help' component={Help} />
-                      <Route exact strict sensitive path='/account' component={Home} />
-                      <Route exact strict sensitive path='/ico' component={BuyIcoTokens} />
-                      <Route exact strict sensitive path='/market-info' component={CoinStats} />
-                      <Route exact strict sensitive path='/transfer' component={TransferTokens} />
+                      <Route exact strict sensitive path='/' component={Home} />
+                      <Route exact strict sensitive path='/account' component={MyAccount} />
                       <Route exact strict sensitive path='/register' component={AddUser} />
-                      <Route exact strict sensitive path='/edit-profile' component={UpdateUser} />
-                      <Route exact strict sensitive path='/delete-profile' component={DeleteUser} />
-                      <Route exact strict sensitive path='/exchange' component={Exchange} />
-                      <Route exact strict sensitive path='/users' component={PublicUserList} />
+                      <Route exact strict sensitive path='/edit' component={UpdateUser} />
+                      <Route exact strict sensitive path='/delete' component={DeleteUser} />
 
                       <Route exact strict sensitive path='/admin' component={Admin} />
-                      <Route exact strict sensitive path='/markup' component={PriceMarkup} />
                       <Route exact strict sensitive path='/fee' component={Fee} />
-                      <Route exact strict sensitive path='/transfer-ownership' component={TransferOwnership} />
-                      <Route exact strict sensitive path='/reclaim-tokens' component={ReclaimTokens} />
-                      <Route exact strict sensitive path='/approve' component={Approve} />
-                      <Route exact strict sensitive path='/finish-mint' component={FinishMinting} />
-                      <Route exact strict sensitive path='/mint' component={Mint} />
+                      <Route exact strict sensitive path='/withdraw' component={Withdraw} />
                       <Route exact strict sensitive path='/whitelist-remove' component={RemoveFromWhitelist} />
                       <Route exact strict sensitive path='/whitelist-add' component={AddToWhitelist} />
                       <Route exact strict sensitive path='/get-user' component={GetUser} />
@@ -144,7 +123,6 @@ class _App extends PureComponent {
 function mapStateToProps(state) {
   return {
     web3: state.web3,
-    Crowdsale: state.Crowdsale,
     Token: state.Token,
     account: state.account
   }

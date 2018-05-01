@@ -16,7 +16,6 @@ const Address = (props) => (
 
 function mapStateToProps(state) {
   return {
-    web3: state.web3,
     account: state.account
   }
 }

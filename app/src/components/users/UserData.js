@@ -112,8 +112,8 @@ class UserData extends PureComponent {
       <Box>
         { this.state.email !== '' ? <div>
           <Heading>Your Data
-            <Anchor onClick={() => { this.setState({redirect: '/edit-profile'})}} icon={<EditIcon />} />
-            <Anchor onClick={() => { this.setState({redirect: '/delete-profile'})}} icon={<DelIcon />} />
+            <Anchor onClick={() => { this.setState({redirect: '/edit'})}} icon={<EditIcon />} />
+            <Anchor onClick={() => { this.setState({redirect: '/delete'})}} icon={<DelIcon />} />
           </Heading>
           { this.state.redirect !== '' ? <Redirect to={this.state.redirect} /> : '' }
           <Table>

@@ -4,9 +4,10 @@ import "./Ownable.sol";
 import "./Roles.sol";
 import "./ManagerWhitelist.sol";
 import "./Fees.sol";
+import "./Pausable.sol";
 
 
-contract Users is Ownable, Roles, ManagerWhitelist, Fees {
+contract Users is Ownable, Roles, ManagerWhitelist, Fees, Pausable {
 
     enum State {
         Waiting,
@@ -122,6 +123,7 @@ contract Users is Ownable, Roles, ManagerWhitelist, Fees {
 
     function getUserStatus(address _user)
     public payable
+    whenNotPaused
     onlyAs(Role.Manager)
     isWhitelisted(msg.sender)
     returns (uint) {
