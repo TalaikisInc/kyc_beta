@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://identiform.com/">
+    <img alt="identiForm" src="https://github.com/Identiform/token_sale_starter/blob/master/media/logo.png" width="683">
+  </a>
+</p>
+
 # identiForm [Demo]
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
