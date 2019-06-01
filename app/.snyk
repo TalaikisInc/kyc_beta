@@ -1,0 +1,36 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.5
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:extend:20180424':
+    - web3 > web3-bzz > swarm-js > eth-lib > servify > request > extend:
+        patched: '2019-06-01T07:11:16.008Z'
+  'npm:hoek:20180212':
+    - react-scripts > webpack-dev-server > chokidar > fsevents > node-pre-gyp > hawk > sntp > hoek:
+        patched: '2019-06-01T07:11:16.008Z'
+    - react-scripts > fsevents > node-pre-gyp > hawk > sntp > hoek:
+        patched: '2019-06-01T07:11:16.008Z'
+    - react-scripts > fsevents > node-pre-gyp > hawk > boom > hoek:
+        patched: '2019-06-01T07:11:16.008Z'
+    - react-scripts > webpack-dev-server > chokidar > fsevents > node-pre-gyp > hawk > hoek:
+        patched: '2019-06-01T07:11:16.008Z'
+    - react-scripts > fsevents > node-pre-gyp > hawk > cryptiles > boom > hoek:
+        patched: '2019-06-01T07:11:16.008Z'
+    - react-scripts > webpack-dev-server > chokidar > fsevents > node-pre-gyp > hawk > boom > hoek:
+        patched: '2019-06-01T07:11:16.008Z'
+    - react-scripts > fsevents > node-pre-gyp > hawk > hoek:
+        patched: '2019-06-01T07:11:16.008Z'
+    - react-scripts > webpack > watchpack > chokidar > fsevents > node-pre-gyp > hawk > hoek:
+        patched: '2019-06-01T07:11:16.008Z'
+    - react-scripts > webpack > watchpack > chokidar > fsevents > node-pre-gyp > hawk > boom > hoek:
+        patched: '2019-06-01T07:11:16.008Z'
+    - react-scripts > webpack > watchpack > chokidar > fsevents > node-pre-gyp > hawk > sntp > hoek:
+        patched: '2019-06-01T07:11:16.008Z'
+    - react-scripts > webpack-dev-server > chokidar > fsevents > node-pre-gyp > hawk > cryptiles > boom > hoek:
+        patched: '2019-06-01T07:11:16.008Z'
+    - react-scripts > webpack > watchpack > chokidar > fsevents > node-pre-gyp > hawk > cryptiles > boom > hoek:
+        patched: '2019-06-01T07:11:16.008Z'
+  'npm:stringstream:20180511':
+    - web3 > web3-bzz > swarm-js > eth-lib > servify > request > stringstream:
+        patched: '2019-06-01T07:11:16.008Z'

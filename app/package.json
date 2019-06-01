@@ -20,23 +20,24 @@
     "grommet": "^1.10.1",
     "grommet-css": "^1.6.0",
     "ipfs-mini": "^1.1.2",
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.11",
     "moment": "^2.22.1",
     "react": "^16.3.1",
-    "react-dom": "^16.3.1",
+    "react-dom": "^16.3.3",
     "react-ga": "^2.5.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
-    "react-scripts": "1.1.4",
+    "react-scripts": "3.0.0",
     "react-validation": "^3.0.7",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "truffle": "^4.1.5",
+    "truffle": "^4.1.9",
     "truffle-contract": "^3.0.4",
     "validator": "^9.4.1",
     "web3": "^1.0.0-beta.34",
-    "web3-utils": "^1.0.0-beta.34"
+    "web3-utils": "^1.0.0-beta.34",
+    "snyk": "^1.170.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -45,7 +46,9 @@
     "eject": "react-scripts eject",
     "analyze": "source-map-explorer build/static/js/main.*",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run --record"
+    "cypress:run": "cypress run --record",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "devDependencies": {
     "babel-plugin-import": "^1.7.0",
@@ -58,5 +61,6 @@
     "react-testing-library": "^2.3.0",
     "source-map-explorer": "^1.5.0",
     "style-loader": "^0.20.3"
-  }
+  },
+  "snyk": true
 }
